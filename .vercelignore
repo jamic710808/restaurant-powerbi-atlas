@@ -1,0 +1,5 @@
+*
+!index.html
+!media/
+!media/*.mp4
+!vercel.json
