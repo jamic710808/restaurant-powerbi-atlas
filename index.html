@@ -6,9 +6,12 @@
 
 .caseNotes{margin:0 0 1.25rem;padding:.75rem 1rem;border:1px solid #cfcdbd;border-radius:.75rem;background:#faf8f0}.caseNotes summary{cursor:pointer;font-weight:700}.caseNotes .trio,.caseNotes .stackGrid{margin-top:.75rem}.caseNotes .stackCard button{margin-top:.5rem;padding:.35rem .65rem;border-radius:.4rem;border:1px solid #cfcdbd;background:#f5f2e8}
 
+
+.liveReport{scroll-margin-top:5rem}.reportPreview{margin:0;padding:clamp(1rem,3vw,2rem);border:1px solid #d2d1c0;border-radius:1rem;background:#faf8f0}.reportPreview[open]{padding:0;overflow:hidden}.reportPreview>summary{cursor:pointer;font-weight:700;color:#244037;padding:.35rem .5rem}.reportPreview[open]>summary{padding:1rem}.reportFrame{display:block;width:100%;height:clamp(400px,64vw,820px);border:0;background:#fff}.reportActions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-top:1rem}.reportActions p{margin:0;flex:1 1 230px}.reportLabel{font-size:.9rem;color:#555a4b}
+@media(max-width:500px){.reportFrame{height:430px}.top a[href="#live-report"]{white-space:nowrap}}
 </style></head><body>
 <a class="skip" href="#journey">跳到圖解</a>
-<header class="top"><a href="#top" class="brand"><span class="brandicon"><i></i><i></i><i></i></span><span>餐飲行業分析<small>POWER BI</small></span></a><nav aria-label="內容導覽"><a href="#journey">一張訂單</a><a href="#atlas">報表圖鑑</a><a href="#workbench">技術工作桌</a><a href="#films">看影片</a></nav></header>
+<header class="top"><a href="#top" class="brand"><span class="brandicon"><i></i><i></i><i></i></span><span>餐飲行業分析<small>POWER BI</small></span></a><nav aria-label="內容導覽"><a href="#journey">一張訂單</a><a href="#atlas">報表圖鑑</a><a href="#live-report">線上報表</a><a href="#workbench">技術工作桌</a><a href="#films">看影片</a></nav></header>
 <main id="top">
 <section class="hero wrap" aria-labelledby="headline"><div class="heroCopy"><p class="eyebrow"><span></span>從一張訂單開始</p><h1 id="headline">看懂一家<br>餐飲連鎖<span>。</span></h1><p class="lead">訂單如何變成營收？哪間店、哪道菜、哪群客人值得多看一眼？跟著真實報表，從一張小票找到下一步。</p><div class="actions"><a class="button primary" href="#atlas">探索報表 →</a><a class="button secondary" href="#films">▶ 看兩支導覽</a></div><div class="heroCounts"><div><b>12</b><span>主要報表頁</span></div><div><b>02</b><span>隱藏鑽取頁</span></div><div><b>02</b><span>有聲導覽</span></div></div></div>
 <figure class="heroView"><div class="window"><span><i></i> Power BI Desktop</span><span>經營總覽</span></div><img id="heroScreen" alt="新版經營總覽的實際畫面"><figcaption><span>報表畫面</span><b>看規模，也看最後留下的利潤</b><span>02 / 14</span></figcaption></figure></section>
@@ -27,6 +30,21 @@
 <details id="bindings"><summary>實際視覺欄位與鑽取設定</summary><div id="bindingContent"></div></details>
 </div></div>
 <div id="atlasGrid" class="atlasGrid" aria-label="全部報表畫面"></div>
+</section>
+
+<section id="live-report" class="wrap section liveReport" aria-labelledby="liveReportTitle">
+  <div class="sectionHeader">
+    <div><p class="eyebrow"><span></span>線上操作</p><h2 id="liveReportTitle">實際操作 Power BI 報表</h2></div>
+    <p>展開後可切換頁面、使用篩選條件。手機可另開報表或使用全螢幕。</p>
+  </div>
+  <details class="reportPreview" id="reportPreview">
+    <summary>載入 Power BI 線上報表</summary>
+    <iframe class="reportFrame" id="reportFrame" title="PowerBI餐飲行業分析｜線上互動報表" data-src="https://app.powerbi.com/view?r=eyJrIjoiMWUyYmE3NDItODk1Ny00M2ZjLTk1OWYtNTBjYjFhODAxZGEwIiwidCI6IjE2ZGVlZGU4LTc5ZTktNGUzMy05OWU2LTlkOGQzOTQyZDc5NiIsImMiOjEwfQ%3D%3D" allowfullscreen></iframe>
+  </details>
+  <div class="reportActions">
+    <a class="button primary" id="openLiveReport" href="https://app.powerbi.com/view?r=eyJrIjoiMWUyYmE3NDItODk1Ny00M2ZjLTk1OWYtNTBjYjFhODAxZGEwIiwidCI6IjE2ZGVlZGU4LTc5ZTktNGUzMy05OWU2LTlkOGQzOTQyZDc5NiIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener noreferrer">在新分頁開啟 Power BI ↗</a>
+    <p class="reportLabel">線上報表需連網，頁面與資料以 Power BI Service 的公開版本為準。</p>
+  </div>
 </section>
 <section id="methods" class="band"><div class="wrap">
 <div class="sectionHeader"><div><p class="eyebrow"><span></span>03 / 分析方法</p><h2>遇到問題，用哪個方法？</h2></div><p>從管理問題選方法。歷史觀察、情境與模擬會在卡片上標示。</p></div>
@@ -218,4 +236,14 @@ async function play(key,t){
 $('#filmGrid').onclick=e=>{const ch=e.target.closest('[data-film]'),p=e.target.closest('[data-play]');if(ch)play(ch.dataset.film,+ch.dataset.start);else if(p)play(p.dataset.play,0);};
 $('#filmGrid').addEventListener('play',e=>{for(const w of $('#filmGrid').querySelectorAll('video'))if(w!==e.target)w.pause();},true);
 })();
-</script></body></html>
+</script>
+<script>
+(() => {
+  const preview = document.getElementById('reportPreview');
+  const frame = document.getElementById('reportFrame');
+  preview.addEventListener('toggle', () => {
+    if (preview.open && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+  });
+})();
+</script>
+</body></html>
